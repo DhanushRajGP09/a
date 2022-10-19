@@ -709,6 +709,7 @@ input:focus{
   border-radius: 4px;
   background-color: #F5F7FB;
 }
+
 .namebox {
   display: flex;
   flex-direction: column;
@@ -839,6 +840,62 @@ input:focus{
   letter-spacing: 0;
   line-height: 24px;
   text-align: center;
+}
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 17px;
+  margin-left: 20px;
+  height: 35px;
+  width: 60px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  margin-top: 140px;
+  margin-right: 140px;
+  background-color: #f9f9f9;
+  height: 106px;
+  width: 203px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.change-password {
+  margin-top: 17px;
+  margin-left: 16px;
+  height: 19px;
+  width: 116px;
+  color: #535353;
+  font-family: "Open Sans";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 19px;
+}
+.line-2 {
+  margin-top: 17px;
+  box-sizing: border-box;
+  height: 1px;
+  width: 194px;
+  border: 1px solid white;
+}
+.sign-out-copy {
+  margin-top: 17px;
+  margin-left: 16px;
+  height: 19px;
+  width: 56px;
+  color: #535353;
+  font-family: "Open Sans";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 19px;
 }
 
 

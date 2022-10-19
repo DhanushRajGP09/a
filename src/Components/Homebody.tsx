@@ -30,14 +30,13 @@ export default function Homebody() {
     },
   ]);
 
-
+  const [isShown, setIsShown] = useState(false);
   let [count, setCount] = useState(0);
   
   useEffect(() => {
     console.warn("useeffect"); 
-    setData(data);  
     setSiteCount();  
-  },[data]);  
+  },[data]);   
   
 function addData() {
       data.push({
@@ -46,13 +45,18 @@ function addData() {
         url: "www.youtube.com",
         img: "./images/facebook.png",
       });
+      setData([...data])
       console.log(data);
   } 
 
   function setSiteCount() {
     setCount(document.getElementsByClassName("container01").length);
   }
-  const navigate = useNavigate();
+  const handleClick = (event: any) => {
+    setIsShown((current: any) => !current);
+  };
+
+ 
   
  
   
@@ -60,7 +64,7 @@ function addData() {
   
   return (
     <div>
-      <Modal />
+      <Modal isShown={isShown} handleClick={handleClick} addData={addData}/>
       <div className="homebody">
         <div style={{ display: "flex" }}>
           <div
@@ -92,9 +96,7 @@ function addData() {
             <img
               src="/images/add.png"
               alt=""
-              onClick={() => {
-                 
-              }}
+              onClick={handleClick}
             />
           </div>
         </div>

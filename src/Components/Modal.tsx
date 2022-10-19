@@ -1,19 +1,24 @@
 import React from 'react'
 import { useState } from 'react';
 
-export default function Modal() {
-  const [isShown, setIsShown] = useState(true);
+export default function Modal(props:any) {
+  const [eye,setEye] = useState("password");
 
-  const handleClick = (event:any) => {
-    setIsShown((current:any) => !current);
-  };
+  function handleEye() {
+    setEye("text");
+    setTimeout(() => {
+       setEye("password");
+     }, 1000);
+
+  }
+  
 
   return (
     <div>
       <div
         id="myModal"
         className="modal"
-        style={{ display: isShown ? "block" : "none" }}
+        style={{ display: props.isShown ? "block" : "none" }}
       >
         <div className="modal-content">
           <form action="">
@@ -30,7 +35,17 @@ export default function Modal() {
                 </div>
                 <div className="sectorbox">
                   <span className="sector-name">Sector/Folder</span>
-                  <input type="text" className="sector-value" />
+                  <div style={{ display: "flex" }} className="sector-value">
+                    <input
+                      type="text"
+                      style={{ width: "307.5px", backgroundColor: "#F5F7FB" }}
+                    ></input>
+                    <img
+                      src="./images/downarrow.png"
+                      alt=""
+                      style={{ height: "20px", marginTop: "5px" }}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="group-7">
@@ -40,7 +55,18 @@ export default function Modal() {
                 </div>
                 <div className="passwordbox">
                   <span className="Password-name">Site Password</span>
-                  <input type="text" className="Password-value" />
+                  <div style={{ display: "flex" }} className="Password-value">
+                    <input
+                      type={eye}
+                      style={{ width: "307.5px", backgroundColor: "#F5F7FB" }}
+                    />
+                    <img
+                      src="./images/eye_on.png"
+                      alt=""
+                      style={{ height: "20px", marginTop: "5px"}}
+                      onClick={()=>{handleEye();}}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="group-6">
@@ -61,7 +87,7 @@ export default function Modal() {
                   className="Save"
                   name="submit"
                   value="submit"
-                  onClick={handleClick}
+                  onClick={props.addData}
                 >
                   <span className="save">SAVE</span>
                 </button>
@@ -69,7 +95,7 @@ export default function Modal() {
             </div>
           </form>
 
-          <div className="close-btn" onClick={handleClick}>
+          <div className="close-btn" onClick={props.handleClick}>
             <img src="./images/close_btn.png" alt="" />
           </div>
         </div>
