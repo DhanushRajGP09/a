@@ -4,10 +4,12 @@ import Signup from './Signup';
 export default function Userinfosignup() {
   return (
     <div
+      id="user-info"
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <div
-        style={{ display: "flex", flexDirection: "row", marginTop: "205px" }}
+        id="login-signupinfo"
+        style={{ display: "flex", flexDirection: "row" }}
       >
         <div className="login-div">
           <div className="login-inside-div">

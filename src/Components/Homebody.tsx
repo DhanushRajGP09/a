@@ -9,74 +9,38 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Homebody() {
   
-  let [data, setData] = useState([
-    {
-      id: "1",
-      webname: "FACEBOOK",
-      url: "www.facebook.com",
-      img: "./images/facebook.png",
-    },
-    {
-      id: "2",
-      webname: "YOUTUBE",
-      url: "www.youtube.com",
-      img: "./images/facebook.png",
-    },
-    {
-      id: "3",
-      webname: "YOUTUBE",
-      url: "www.youtube.com",
-      img: "./images/facebook.png",
-    },
-  ]);
+  let [data, setData] = useState([]);
 
   const [isShown, setIsShown] = useState(false);
   let [count, setCount] = useState(0);
   
-  useEffect(() => {
-    console.warn("useeffect"); 
-    setSiteCount();  
-  },[data]);   
-  
-function addData() {
-      data.push({
-        id: "4",
-        webname: "YOUTUBE",
-        url: "www.youtube.com",
-        img: "./images/facebook.png",
-      });
-      setData([...data])
-      console.log(data);
-  } 
-
-  function setSiteCount() {
+const sitesdata = async() => {
+    let url = "http://localhost:5000/data";
+    let data = await fetch(url);
+    let parsedData = await data.json()
+    console.log(parsedData);
+    setData(parsedData)
     setCount(document.getElementsByClassName("container01").length);
-  }
+}
+  
+  
+  
+useEffect(() => {
+    sitesdata();
+    console.warn("useeffect"); 
+  },[]);    
+  
+
   const handleClick = (event: any) => {
     setIsShown((current: any) => !current);
   };
 
- 
-  
- 
-  
- 
-  
   return (
     <div>
-      <Modal isShown={isShown} handleClick={handleClick} addData={addData}/>
+      <Modal isShown={isShown} handleClick={handleClick} />
       <div className="homebody">
-        <div style={{ display: "flex" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              marginLeft: "91px",
-              marginTop: "38px",
-              height: "114px",
-              width: "211px",
-            }}
-          >
+        <div className="header-down2" style={{ display: "flex" }}>
+          <div className='header-down'>
             <span className="sites">Sites</span>
             <div className="heading-focus"></div>
           </div>

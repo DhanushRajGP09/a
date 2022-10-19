@@ -5,7 +5,7 @@ import Sidemenu from '../Components/Sidemenu';
 
 export default function Homescreen() {
   return (
-    <div style={{ display: "flex", backgroundColor: "#F5F7FB" ,margin:"auto 12%"}}>
+    <div className='homescreen'  style={{ display: "flex", backgroundColor: "#F5F7FB" ,margin:"auto 12%"}}>
       <Sidemenu />
       <div style={{ display: "flex", flexDirection: "column" }}>
         <Header />

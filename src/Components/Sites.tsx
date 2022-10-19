@@ -21,7 +21,7 @@ export default function Sites(props:any) {
           {
             props.data.map((item:any )=> {
               return (
-                <Sitescontainer webname={item.webname} url={item.url} img={item.img} key={item.id}/>
+                <Sitescontainer webname={item.webname} url={item.url} img={item.img} key={item._id}/>
               )
             })
           }

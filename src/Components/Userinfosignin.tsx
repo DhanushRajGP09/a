@@ -5,11 +5,11 @@ import Signin from "./Signin";
 
 export default function Userinfo() {
   return (
-    <div
+    <div className="user-info"
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <div
-        style={{ display: "flex", flexDirection: "row", marginTop: "205px" }}
+      <div id="login-signupinfo"
+        style={{ display: "flex", flexDirection: "row"}}
       >
         <div className="login-div">
           <div className="login-inside-div">

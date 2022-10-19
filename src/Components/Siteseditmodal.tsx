@@ -1,64 +1,25 @@
-import React from 'react'
-import { useState,useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Modal(props:any) {
+export default function Siteseditmodal(props: any) {
   const [url, seturl] = useState("");
   const [sitename, setSitename] = useState("");
   const [sectorname, setSectorname] = useState("");
   const [username, setUsername] = useState("");
   const [sitepassword, setSitepassword] = useState("");
-  const [eye,setEye] = useState("password");
-  const [notes,setNotes] = useState("")
-    const navigate = useNavigate();
+  const [eye, setEye] = useState("password");
+  const [notes, setNotes] = useState("");
+  const navigate = useNavigate();
 
   function handleEye() {
     setEye("text");
     setTimeout(() => {
-       setEye("password");
-     }, 1000);
-    }
-  
-  const collectData = async () => {
-    console.warn(url,sitename,sectorname,username,sitepassword,notes);
-    let result = await fetch("http://localhost:5000/addsite", {
-      method: "post",
-      body: JSON.stringify({
-        url,
-        sitename,
-        sectorname,
-        username,
-        sitepassword,
-        notes,
-      }),
-      headers: {
-        "Content-Type": "application/JSON",
-      },
-    });
-    result = await result.json();
-    console.warn(result);
-    navigate("/homescreen");
-    localStorage.setItem("user", JSON.stringify(result));
-  };
-
-  const addData = async() =>{
-    let result = await fetch("http://localhost:5000/data", {
-      method: "post",
-      body: JSON.stringify({
-        "url":url,
-        "webname":sitename,
-      }),
-      headers: {
-        "Content-Type": "application/JSON",
-      },
-    });
-    result = await result.json();
-    console.warn(result);
-    navigate("/homescreen");
-    localStorage.setItem("user", JSON.stringify(result));
-
+      setEye("password");
+    }, 1000);
   }
-  
+
+
   return (
     <div>
       <div
@@ -69,7 +30,7 @@ export default function Modal(props:any) {
         <div className="modal-content">
           <form action="">
             <div className="popup">
-              <span className="add-site ">Add Site</span>
+              <span className="add-site ">Site Details</span>
               <div className="group-9">
                 <span className="urltext">URL</span>
                 <input
@@ -145,30 +106,7 @@ export default function Modal(props:any) {
                   onChange={(e) => setNotes(e.target.value)}
                 />
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  marginLeft: "319.5px",
-                  marginTop: "32.5px",
-                }}
-              >
-                <button className="Reset">
-                  <span className="reset">RESET</span>
-                </button>
-                <button
-                  className="Save"
-                  name="submit"
-                  value="submit"
-                  onClick={()=>{
-                    
-                    addData();
-                    collectData();
-                    
-                  }}
-                >
-                  <span className="save">SAVE</span>
-                </button>
-              </div>
+             
             </div>
           </form>
 
